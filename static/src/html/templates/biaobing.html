@@ -1,0 +1,41 @@
+<div class="biaobing" ng-controller="BiaoBingCtrl">
+  <div class="div-main">
+    <div class="title text-center">
+      十大标兵评选
+    </div>
+    <div class="guize text-center">
+      评选规则
+    </div>
+    <div class="vote-info">
+      <div><i class="iconfont">&#xe627;</i> 参赛数：<span ng-bind="voteInfo.nums"></span></div>
+      <div class="center"><i class="iconfont">&#xe66f;</i> 投票数：<span ng-bind="voteInfo.voteCount"></span></div>
+      <div><i class="iconfont">&#xe634;</i> 访问量：<span ng-bind="voteInfo.vistors"></span></div>
+    </div>
+    <div class="text-center">
+      活动于<span class="text-danger">2018年12月19日0时0分0秒</span>结束
+    </div>
+    <div>
+      <div ng-repeat="item in items">
+        <div class="item-title" ng-bind="item.title"></div>
+        <div class="items">
+          <div class="item" ng-repeat="data in item.datas">
+            <div>
+              <div class="num" ng-bind="data.num"></div>
+              <img src="images/zj.jpg" class="img-responsive">
+            </div>
+            <div class="info">
+              <div class="name"><i class="iconfont">&#xe627;</i> <span ng-bind="data.name"></span></div>
+              <div>
+                <div class="vote"><i class="iconfont">&#xe672;</i> 投票</div>
+              </div>
+              <div class="vote-count">
+                <span ng-bind="data.stars"></span>票
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
