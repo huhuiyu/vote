@@ -1,0 +1,86 @@
+/*index页面的css*/
+.index {
+  background-image: url('../images/bg.jpg');
+  background-size: cover;
+  background-color: #aa0000;
+  /* background-color: #ff0000; */
+  /* color: #ffffff; */
+  font-size: 2rem;
+}
+.index .div-main {
+  background-color: #ffffff;
+  width: 1300px;
+  margin: 0px auto;
+}
+
+.index .items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.index .items .item {
+  position: relative;
+  width: 30%;
+  padding: 0.1rem;
+}
+
+.index .items .item img {
+  width: 100%;
+}
+
+.index .items .item .num {
+  position: absolute;
+  padding: 0.5rem;
+  color: #ffffff;
+  background-color: rgba(50, 50, 50, 0.7);
+}
+
+.index .items .item .info {
+  background-color: #aa0000;
+  color: #ffffff;
+}
+
+.index .items .item .name {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.index .items .item .vote {
+  width: 80%;
+  background-color: #ffffff;
+  color: #000000;
+  margin: 0px auto;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.index .items .item .vote:hover {
+  background-color: #ffaaaa;
+}
+
+.index .items .item .vote-count {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.index .vote-info {
+  display: flex;
+  justify-content: space-around;
+  background-color: #aa0000;
+  padding: 1rem;
+}
+
+.index .vote-info div {
+  width: 33%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.index .vote-info .center {
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+}
