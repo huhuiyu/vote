@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,7 @@ import top.huhuiyu.vote.entity.VoteInfo;
 import top.huhuiyu.vote.model.DataModel;
 import top.huhuiyu.vote.service.DataService;
 import top.huhuiyu.vote.utils.JsonMessage;
+import top.huhuiyu.vote.utils.MyUtils;
 
 /**
  * 
@@ -41,6 +43,7 @@ public class DataServiceImpl implements DataService {
   private static DataInfo dataInfo;
   private static long lastmodify = -1;
   private static volatile Map<String, List<VoteInfo>> voteInfos = new HashMap<>();
+  private static volatile Map<String, String> ips = new HashMap<>();
 
   public DataServiceImpl() {
   }
@@ -126,6 +129,45 @@ public class DataServiceImpl implements DataService {
   }
 
   /**
+   * -加载ip数据
+   */
+  @SuppressWarnings("unchecked")
+  private static synchronized void loadIpsData() {
+    try {
+      // 数据为空就读取
+      if (!voteInfos.isEmpty()) {
+        return;
+      }
+      File dataFile = new File(System.getProperty("user.dir") + IPS_FILE);
+
+      if (!dataFile.exists()) {
+        // 文件不存在就初始化
+        saveIpsData();
+      } else {
+        // 否则就读取
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File(System.getProperty("user.dir") + IPS_FILE)));
+        ips = (Map<String, String>) ois.readObject();
+        ois.close();
+      }
+      log.debug(ips.toString());
+    } catch (Exception ex) {
+      throw new RuntimeException("读取投票文件发生错误。" + ex.getMessage());
+    }
+  }
+
+  /**
+   * -保存ip数据
+   * 
+   * @throws Exception
+   */
+  private static synchronized void saveIpsData() throws Exception {
+    ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(System.getProperty("user.dir") + IPS_FILE)));
+    oos.writeObject(ips);
+    oos.flush();
+    oos.close();
+  }
+
+  /**
    * -按照id查询标兵
    * 
    * @param biaoBing
@@ -196,6 +238,14 @@ public class DataServiceImpl implements DataService {
 
   @Override
   public synchronized JsonMessage voteBiaoBing(DataModel model) throws Exception {
+    loadIpsData();
+    String ip = MyUtils.getIpAddr() + VoteInfo.BIAOBING;
+    String now = SDF.format(new Date());
+    if (ips.containsKey(ip) && now.equals(ips.get(ip))) {
+      return JsonMessage.getFail("今天已经投过票了");
+    }
+    ips.put(ip, now);
+    saveIpsData();
     loadVoteData();
     List<VoteInfo> vis = voteInfos.get(VoteInfo.BIAOBING);
     List<Integer> ids = getIds(model.getSelectedIds());

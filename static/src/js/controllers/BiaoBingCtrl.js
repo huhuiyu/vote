@@ -62,7 +62,7 @@
         { selectedIds: ids.join(',') },
         function(data) {
           DialogService.hideWait();
-          query();
+          DialogService.showAlert(data.message, query);
         }
       );
     };
