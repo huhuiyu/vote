@@ -15,6 +15,7 @@ public class BiaoBingInfo extends BaseEntity {
   private Integer id;
   private String title;
   private List<BiaoBing> biaobings;
+  private Integer selectedId = -1;
 
   public BiaoBingInfo() {
   }
@@ -49,4 +50,12 @@ public class BiaoBingInfo extends BaseEntity {
     this.biaobings = biaobings;
   }
 
+  public Integer getSelectedId() {
+    return selectedId;
+  }
+
+  public void setSelectedId(Integer selelectId) {
+    this.selectedId = selelectId;
+  }
+  
 }

@@ -26,7 +26,8 @@
             <div class="info">
               <div class="name"><i class="iconfont">&#xe627;</i> <span ng-bind="data.name"></span></div>
               <div>
-                <div class="vote"><i class="iconfont">&#xe672;</i> 投票</div>
+                <div ng-class="{true:'vote selected',false:'vote'}[item.selectedId==data.id]" ng-click="item.selectedId=data.id"><i
+                    class="iconfont">&#xe672;</i> 投票</div>
               </div>
               <div class="vote-count">
                 <span ng-bind="data.stars"></span>票
@@ -36,6 +37,8 @@
         </div>
       </div>
     </div>
-
+    <div class="vote-confirm text-center">
+      <span class="btn btn-danger" ng-click="toVote();">投票</span>
+    </div>
   </div>
 </div>

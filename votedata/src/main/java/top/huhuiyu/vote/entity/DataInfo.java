@@ -18,6 +18,11 @@ public class DataInfo extends BaseEntity {
    */
   private List<BiaoBingInfo> biaobingInfos;
 
+  /**
+   * -兵嫂列表
+   */
+  private List<BiaoBingInfo> bingsaoInfos;
+
   public DataInfo() {
   }
 
@@ -27,6 +32,14 @@ public class DataInfo extends BaseEntity {
 
   public void setBiaobingInfos(List<BiaoBingInfo> biaobingInfos) {
     this.biaobingInfos = biaobingInfos;
+  }
+
+  public List<BiaoBingInfo> getBingsaoInfos() {
+    return bingsaoInfos;
+  }
+
+  public void setBingsaoInfos(List<BiaoBingInfo> bingsaoInfos) {
+    this.bingsaoInfos = bingsaoInfos;
   }
 
 }

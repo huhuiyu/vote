@@ -10,7 +10,7 @@
 
 .biaobing .div-main {
   background-color: #ffffff;
-  width: 1300px;
+  width: 700px;
   margin: 0px auto;
 }
 
@@ -93,7 +93,8 @@
   cursor: pointer;
 }
 
-.biaobing .items .item .vote:hover {
+.biaobing .items .item .vote:hover,
+.biaobing .items .item .vote.selected {
   background-color: #ffaaaa;
 }
 
@@ -119,4 +120,8 @@
 .biaobing .vote-info .center {
   border-left: 1px solid #ffffff;
   border-right: 1px solid #ffffff;
+}
+
+.biaobing .vote-confirm {
+  margin-bottom: 2rem;
 }

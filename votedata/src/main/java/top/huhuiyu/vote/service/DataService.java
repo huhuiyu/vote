@@ -11,6 +11,7 @@ import top.huhuiyu.vote.utils.JsonMessage;
  */
 public interface DataService {
   public static final String DATA_FILE = "/data.json";
+  public static final String VOTE_FILE = "/vote.data";
 
   /**
    * -获取标兵信息
@@ -29,4 +30,13 @@ public interface DataService {
    * @throws Exception
    */
   JsonMessage getBiaoBingById(DataModel model) throws Exception;
+
+  /**
+   * -标兵投票
+   * 
+   * @param model
+   * @return
+   * @throws Exception
+   */
+  JsonMessage voteBiaoBing(DataModel model) throws Exception;
 }

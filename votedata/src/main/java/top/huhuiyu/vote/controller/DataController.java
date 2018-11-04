@@ -29,4 +29,9 @@ public class DataController {
   public JsonMessage queryBiaobingById(DataModel model) throws Exception {
     return dataService.getBiaoBingById(model);
   }
+
+  @RequestMapping("/voteBiaoBing")
+  public JsonMessage voteBiaoBing(DataModel model) throws Exception {
+    return dataService.voteBiaoBing(model);
+  }
 }

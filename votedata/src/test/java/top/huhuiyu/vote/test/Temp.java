@@ -21,9 +21,11 @@ import top.huhuiyu.vote.service.DataService;
  */
 public class Temp {
   public static void writeData() throws Exception {
-    int groupbb = 10;
+    int groupbb = 2;
     int numsbb = 3;
+    int numsbs = 2;
     DataInfo dataInfo = new DataInfo();
+    // ==================================================================
     List<BiaoBingInfo> biaoBingInfos = new ArrayList<>();
     int biaobingid = 0;
     for (int i = 1; i <= groupbb; i++) {
@@ -36,6 +38,21 @@ public class Temp {
       biaoBingInfos.add(biaoBingInfo);
     }
     dataInfo.setBiaobingInfos(biaoBingInfos);
+
+    // ==================================================================
+    List<BiaoBingInfo> bingSaoInfos = new ArrayList<>();
+    biaobingid = 0;
+    for (int i = 1; i <= groupbb; i++) {
+      List<BiaoBing> bingsaos = new ArrayList<>();
+      for (int j = 1; j <= numsbs; j++) {
+        biaobingid++;
+        bingsaos.add(new BiaoBing(biaobingid, biaobingid + "号", "兵嫂" + biaobingid, "信息" + biaobingid, "images/bingsao001.jpg"));
+      }
+      BiaoBingInfo biaoBingInfo = new BiaoBingInfo(i, "标兵嫂" + i, bingsaos);
+      bingSaoInfos.add(biaoBingInfo);
+    }
+    dataInfo.setBingsaoInfos(bingSaoInfos);
+
     JSON.writeJSONString(new FileOutputStream(System.getProperty("user.dir") + DataService.DATA_FILE), dataInfo, SerializerFeature.PrettyFormat);
     System.out.println("ok");
   }

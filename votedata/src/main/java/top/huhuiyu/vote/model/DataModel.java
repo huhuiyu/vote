@@ -13,6 +13,7 @@ public class DataModel extends BaseModel {
 
   private static final long serialVersionUID = 8106776420172205249L;
   private BiaoBing biaoBing = new BiaoBing();
+  private String selectedIds;
 
   public DataModel() {
   }
@@ -23,6 +24,14 @@ public class DataModel extends BaseModel {
 
   public void setBiaoBing(BiaoBing biaoBing) {
     this.biaoBing = biaoBing;
+  }
+
+  public String getSelectedIds() {
+    return selectedIds;
+  }
+
+  public void setSelectedIds(String selectedIds) {
+    this.selectedIds = selectedIds;
   }
 
 }
