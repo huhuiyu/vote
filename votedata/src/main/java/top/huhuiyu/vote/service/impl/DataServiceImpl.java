@@ -228,7 +228,7 @@ public class DataServiceImpl implements DataService {
         }
       }
     }
-    return JsonMessage.getSuccess("").put("list", list);
+    return JsonMessage.getSuccess("").put("list", list).put("rule", dataInfo.getBiaobingRule());
   }
 
   @Override
@@ -258,6 +258,30 @@ public class DataServiceImpl implements DataService {
     }
     saveVoteData();
     return JsonMessage.getSuccess("投票成功");
+  }
+
+  @Override
+  public JsonMessage getBingSaoInfo(DataModel model) throws Exception {
+    loadData();
+    loadVoteData();
+    List<VoteInfo> vis = voteInfos.get(VoteInfo.BINGSAO);
+    List<BiaoBingInfo> list = dataInfo.getBingsaoInfos();
+    for (BiaoBingInfo biaoBingInfo : list) {
+      for (BiaoBing biaoBing : biaoBingInfo.getBiaobings()) {
+        for (VoteInfo vi : vis) {
+          if (vi.getId().equals(biaoBing.getId())) {
+            biaoBing.setStars(vi.getCount());
+          }
+        }
+      }
+    }
+    return JsonMessage.getSuccess("").put("list", list).put("rule", dataInfo.getBingsaoRule());
+  }
+
+  @Override
+  public JsonMessage getIndexRule(DataModel model) throws Exception {
+    loadData();
+    return JsonMessage.getSuccess("").put("rule", dataInfo.getTotalRule());
   }
 
 }

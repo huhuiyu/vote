@@ -1,5 +1,24 @@
-<div class="index" ng-controller="IndexCtrl">
-  <div class="div-main">
-    建设中
+<div class="index h100" ng-controller="IndexCtrl">
+  <div class="div-main h100">
+    <div class="top">
+      <img src="images/top.jpg" class="img-responsive">
+    </div>
+    <div class="title">
+      <p ng-bind="rule" style="text-indent: 2em;"></p>
+    </div>
+    <div class="vote">
+      <div class="vote-info">
+        <div class="text-center title">十佳标兵评选</div>
+        <div class="logo" ng-click="toBiaobing()">
+          <i class="iconfont">&#xe66f;</i>
+        </div>
+      </div>
+      <div class="vote-info">
+        <div class="text-center title">十佳军嫂评选</div>
+        <div class="logo" ng-click="toBingSao()">
+          <i class="iconfont">&#xe66f;</i>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

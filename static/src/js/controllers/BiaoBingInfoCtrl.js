@@ -5,10 +5,17 @@
     '$log',
     '$location',
     'DataService',
+    'MyUtilService',
     BiaoBingInfoCtrl
   ]);
 
-  function BiaoBingInfoCtrl($scope, $log, $location, DataService) {
+  function BiaoBingInfoCtrl(
+    $scope,
+    $log,
+    $location,
+    DataService,
+    MyUtilService
+  ) {
     $log.debug('BiaoBingInfoCtrl init...', $location.search().id);
     var bbid = $location.search().id;
 
@@ -24,6 +31,9 @@
         $scope.biaobing = data.datas.biaobing;
       }
     );
-   
+
+    $scope.goback = function() {
+      MyUtilService.toPage('/biaobing');
+    };
   }
 })();

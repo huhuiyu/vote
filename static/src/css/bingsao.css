@@ -1,5 +1,5 @@
-/*biaobing页面的css*/
-.biaobing {
+/*bingsao页面的css*/
+.bingsao {
   background-image: url('../images/bg.jpg');
   background-size: cover;
   background-color: #aa0000;
@@ -8,13 +8,13 @@
   font-size: 2rem;
 }
 
-.biaobing .div-main {
+.bingsao .div-main {
   background-color: #ffffff;
   width: 1300px;
   margin: 0px auto;
 }
 
-.biaobing .title {
+.bingsao .title {
   background-color: #aa0000;
   color: #ffffff;
   font-size: 5rem;
@@ -22,21 +22,21 @@
   width: 100%;
 }
 
-.biaobing .guize {
+.bingsao .guize {
   background-color: #aa0000;
   color: #ffffff;
   font-size: 6rem;
   margin: 0px 0px 1px 0px;
 }
 
-.biaobing .items {
+.bingsao .items {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 0px 0px 2rem 0px;
 }
 
-.biaobing .item-title {
+.bingsao .item-title {
   background-color: #aa0000;
   color: #ffffff;
   font-size: 3rem;
@@ -45,43 +45,43 @@
   text-align: center;
 }
 
-.biaobing .items .item {
+.bingsao .items .item {
   position: relative;
-  width: 25%;
+  width: 45%;
   padding: 0.1rem;
 }
 
-.biaobing .items .item:hover {
+.bingsao .items .item:hover {
   box-shadow: 0px 0px 1rem #aa0000;
 }
 
-.biaobing .items .item img {
+.bingsao .items .item img {
   width: 100%;
 }
 
-.biaobing .items .item:hover img {
+.bingsao .items .item:hover img {
   cursor: pointer;
   width: 100%;
 }
 
-.biaobing .items .item .num {
+.bingsao .items .item .num {
   position: absolute;
   padding: 0.5rem;
   color: #ffffff;
   background-color: rgba(50, 50, 50, 0.7);
 }
 
-.biaobing .items .item .info {
+.bingsao .items .item .info {
   background-color: #aa0000;
   color: #ffffff;
 }
 
-.biaobing .items .item .name {
+.bingsao .items .item .name {
   text-align: center;
   font-size: 1.5rem;
 }
 
-.biaobing .items .item .vote {
+.bingsao .items .item .vote {
   width: 80%;
   background-color: #ffffff;
   color: #000000;
@@ -93,17 +93,17 @@
   cursor: pointer;
 }
 
-.biaobing .items .item .vote:hover,
-.biaobing .items .item .vote.selected {
+.bingsao .items .item .vote:hover,
+.bingsao .items .item .vote.selected {
   background-color: #ffaaaa;
 }
 
-.biaobing .items .item .vote-count {
+.bingsao .items .item .vote-count {
   font-size: 1.5rem;
   text-align: center;
 }
 
-.biaobing .vote-info {
+.bingsao .vote-info {
   display: flex;
   justify-content: space-around;
   background-color: #aa0000;
@@ -111,17 +111,17 @@
   margin: 0px 0px 1px 0px;
 }
 
-.biaobing .vote-info div {
+.bingsao .vote-info div {
   width: 33%;
   text-align: center;
   color: #ffffff;
 }
 
-.biaobing .vote-info .center {
+.bingsao .vote-info .center {
   border-left: 1px solid #ffffff;
   border-right: 1px solid #ffffff;
 }
 
-.biaobing .vote-confirm {
+.bingsao .vote-confirm {
   margin-bottom: 2rem;
 }

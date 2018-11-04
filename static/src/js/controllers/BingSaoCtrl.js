@@ -1,32 +1,32 @@
 (function() {
   var ctrls = angular.module('controllers');
-  ctrls.controller('BiaoBingCtrl', [
+  ctrls.controller('BingSaoCtrl', [
     '$scope',
     '$log',
     'DataService',
     'MyUtilService',
     'DialogService',
-    BiaoBingCtrl
+    BingSaoCtrl
   ]);
 
-  function BiaoBingCtrl(
+  function BingSaoCtrl(
     $scope,
     $log,
     DataService,
     MyUtilService,
     DialogService
   ) {
-    $log.debug('BiaoBingCtrl init...');
+    $log.debug('BingSaoCtrl init...');
 
     // 处理scope销毁
     $scope.$on('$destroy', function() {
-      $log.debug('BiaoBingCtrl destroy...');
+      $log.debug('BingSaoCtrl destroy...');
     });
 
     $scope.voteInfo = { nums: 35, voteCount: 1923, vistors: 23412 };
 
     function query() {
-      DataService.send('/data/biaobingInfos', {}, function(data) {
+      DataService.send('/data/bingsaoInfos', {}, function(data) {
         $scope.items = data.datas.list;
         $scope.rule=data.datas.rule;
       });
@@ -37,7 +37,7 @@
     $scope.items = [];
 
     $scope.info = function(id) {
-      MyUtilService.toPage('/biaobinginfo', { id: id });
+      MyUtilService.toPage('/bingsaoinfo', { id: id });
     };
 
     $scope.goback = function() {

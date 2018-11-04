@@ -34,4 +34,14 @@ public class DataController {
   public JsonMessage voteBiaoBing(DataModel model) throws Exception {
     return dataService.voteBiaoBing(model);
   }
+
+  @RequestMapping("/getIndexRule")
+  public JsonMessage getIndexRule(DataModel model) throws Exception {
+    return dataService.getIndexRule(model);
+  }
+
+  @RequestMapping("/bingsaoInfos")
+  public JsonMessage bingsaoInfos(DataModel model) throws Exception {
+    return dataService.getBingSaoInfo(model);
+  }
 }

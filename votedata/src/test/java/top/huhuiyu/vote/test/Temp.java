@@ -21,10 +21,14 @@ import top.huhuiyu.vote.service.DataService;
  */
 public class Temp {
   public static void writeData() throws Exception {
-    int groupbb = 2;
+    int groupbb = 10;
     int numsbb = 3;
-    int numsbs = 2;
+    int numsbs = 20;
+    int groupbs = 1;
     DataInfo dataInfo = new DataInfo();
+    dataInfo.setTotalRule("首页显示的投票规则");
+    dataInfo.setBiaobingRule("标兵的投票规则");
+    dataInfo.setBingsaoRule("军嫂的投票规则");
     // ==================================================================
     List<BiaoBingInfo> biaoBingInfos = new ArrayList<>();
     int biaobingid = 0;
@@ -42,7 +46,7 @@ public class Temp {
     // ==================================================================
     List<BiaoBingInfo> bingSaoInfos = new ArrayList<>();
     biaobingid = 0;
-    for (int i = 1; i <= groupbb; i++) {
+    for (int i = 1; i <= groupbs; i++) {
       List<BiaoBing> bingsaos = new ArrayList<>();
       for (int j = 1; j <= numsbs; j++) {
         biaobingid++;

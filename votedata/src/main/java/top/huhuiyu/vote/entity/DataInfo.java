@@ -23,6 +23,10 @@ public class DataInfo extends BaseEntity {
    */
   private List<BiaoBingInfo> bingsaoInfos;
 
+  private String totalRule="";
+  private String biaobingRule="";
+  private String bingsaoRule="";
+
   public DataInfo() {
   }
 
@@ -42,4 +46,28 @@ public class DataInfo extends BaseEntity {
     this.bingsaoInfos = bingsaoInfos;
   }
 
+  public String getTotalRule() {
+    return totalRule;
+  }
+
+  public void setTotalRule(String totalRule) {
+    this.totalRule = totalRule;
+  }
+
+  public String getBiaobingRule() {
+    return biaobingRule;
+  }
+
+  public void setBiaobingRule(String biaobingRule) {
+    this.biaobingRule = biaobingRule;
+  }
+
+  public String getBingsaoRule() {
+    return bingsaoRule;
+  }
+
+  public void setBingsaoRule(String bingsaoRule) {
+    this.bingsaoRule = bingsaoRule;
+  }
+  
 }

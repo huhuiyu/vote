@@ -1,8 +1,14 @@
 (function() {
   var ctrls = angular.module('controllers');
-  ctrls.controller('IndexCtrl', ['$scope', '$log', IndexCtrl]);
+  ctrls.controller('IndexCtrl', [
+    '$scope',
+    '$log',
+    'DataService',
+    'MyUtilService',
+    IndexCtrl
+  ]);
 
-  function IndexCtrl($scope, $log) {
+  function IndexCtrl($scope, $log, DataService, MyUtilService) {
     $log.debug('IndexCtrl init...');
 
     // 处理scope销毁
@@ -10,18 +16,16 @@
       $log.debug('IndexCtrl destroy...');
     });
 
-    $scope.voteInfo = { nums: 35, voteCount: 1923, vistors: 23412 };
+    DataService.send('/data/getIndexRule', {}, function(data) {
+      $scope.rule = data.datas.rule;
+    });
 
-    $scope.items = [
-      { name: '姓名', stars: 12345, num: '一号' },
-      { name: '姓名', stars: 12345, num: '一号' },
-      { name: '姓名', stars: 12345, num: '一号' },
-      { name: '姓名', stars: 12345, num: '一号' },
-      { name: '姓名', stars: 12345, num: '一号' },
-      { name: '姓名', stars: 12345, num: '一号' },
-      { name: '姓名', stars: 12345, num: '一号' },
-      { name: '姓名', stars: 12345, num: '一号' },
-      { name: '姓名', stars: 12345, num: '一号' }
-    ];
+    $scope.toBiaobing = function() {
+      MyUtilService.toPage('/biaobing');
+    };
+
+    $scope.toBingSao = function() {
+      MyUtilService.toPage('/bingsao');
+    };
   }
 })();

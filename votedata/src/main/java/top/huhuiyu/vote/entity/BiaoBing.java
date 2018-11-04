@@ -19,6 +19,7 @@ public class BiaoBing extends BaseEntity {
   private String image;
   private AddInfo addInfo;
   private int stars = 0;
+  private boolean selected = false;
 
   public BiaoBing() {
   }
@@ -85,6 +86,14 @@ public class BiaoBing extends BaseEntity {
 
   public void setStars(int stars) {
     this.stars = stars;
+  }
+
+  public boolean isSelected() {
+    return selected;
+  }
+
+  public void setSelected(boolean selected) {
+    this.selected = selected;
   }
 
 }
