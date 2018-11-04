@@ -26,7 +26,8 @@ public class ControllerLogger extends BaseAop {
 
   @Before("controllerPointcut()")
   public void beforeController(JoinPoint jp) {
-    log.debug(String.format("进入：%s", jp.getSignature()));
+    String ip = MyUtils.getIpAddr();
+    log.debug(String.format("%s-->进入：%s", ip, jp.getSignature()));
     StringBuilder sb = new StringBuilder();
     Object[] args = jp.getArgs();
     for (Object arg : args) {

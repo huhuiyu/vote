@@ -13,7 +13,6 @@ import top.huhuiyu.vote.utils.JsonMessage;
  */
 @RestController
 public class IndexController {
-
   @RequestMapping("")
   public JsonMessage index() throws Exception {
     return JsonMessage.getSuccess("欢迎使用投票系统");

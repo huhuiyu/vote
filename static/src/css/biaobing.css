@@ -51,7 +51,16 @@
   padding: 0.1rem;
 }
 
+.biaobing .items .item:hover {
+  box-shadow: 0px 0px 1rem #aa0000;
+}
+
 .biaobing .items .item img {
+  width: 100%;
+}
+
+.biaobing .items .item:hover img {
+  cursor: pointer;
   width: 100%;
 }
 
@@ -98,6 +107,7 @@
   justify-content: space-around;
   background-color: #aa0000;
   padding: 1rem;
+  margin: 0px 0px 1px 0px;
 }
 
 .biaobing .vote-info div {

@@ -11,17 +11,17 @@
       <div class="center"><i class="iconfont">&#xe66f;</i> 投票数：<span ng-bind="voteInfo.voteCount"></span></div>
       <div><i class="iconfont">&#xe634;</i> 访问量：<span ng-bind="voteInfo.vistors"></span></div>
     </div>
-    <div class="text-center">
+    <!-- <div class="text-center">
       活动于<span class="text-danger">2018年12月19日0时0分0秒</span>结束
-    </div>
+    </div> -->
     <div>
       <div ng-repeat="item in items">
         <div class="item-title" ng-bind="item.title"></div>
         <div class="items">
-          <div class="item" ng-repeat="data in item.datas">
+          <div class="item" ng-repeat="data in item.biaobings">
             <div>
               <div class="num" ng-bind="data.num"></div>
-              <img src="images/zj.jpg" class="img-responsive">
+              <img ng-src="{{data.image}}" class="img-responsive">
             </div>
             <div class="info">
               <div class="name"><i class="iconfont">&#xe627;</i> <span ng-bind="data.name"></span></div>
