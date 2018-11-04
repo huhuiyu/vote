@@ -2,3 +2,9 @@
 /static/nginx/temp
 /static/nginx/logs
 /static/node_modules
+/votedata/.classpath
+/votedata/.gradle
+/votedata/bin
+/votedata/build
+/votedata/gradle
+/votedata/logs
