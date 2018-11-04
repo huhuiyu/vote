@@ -21,7 +21,7 @@
           <div class="item" ng-repeat="data in item.biaobings">
             <div>
               <div class="num" ng-bind="data.num"></div>
-              <img ng-src="{{data.image}}" class="img-responsive">
+              <img ng-src="{{data.image}}" class="img-responsive" ng-click="info(data.id)">
             </div>
             <div class="info">
               <div class="name"><i class="iconfont">&#xe627;</i> <span ng-bind="data.name"></span></div>

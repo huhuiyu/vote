@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 
+import top.huhuiyu.vote.entity.AddInfo;
+import top.huhuiyu.vote.entity.BiaoBing;
 import top.huhuiyu.vote.entity.BiaoBingInfo;
 import top.huhuiyu.vote.entity.DataInfo;
 import top.huhuiyu.vote.model.DataModel;
@@ -32,6 +34,9 @@ public class DataServiceImpl implements DataService {
   public DataServiceImpl() {
   }
 
+  /**
+   * -加载数据
+   */
   private static void loadData() {
     // 读取文件到datainfo
     try {
@@ -54,11 +59,44 @@ public class DataServiceImpl implements DataService {
     }
   }
 
+  /**
+   * -按照id查询标兵
+   * 
+   * @param biaoBing
+   * @return
+   * @throws Exception
+   */
+  private BiaoBing find(BiaoBing biaoBing) throws Exception {
+    loadData();
+    if (biaoBing == null || biaoBing.getId() == null) {
+      return null;
+    }
+    List<BiaoBingInfo> list = dataInfo.getBiaobingInfos();
+    for (BiaoBingInfo biaoBingInfo : list) {
+      List<BiaoBing> bblist = biaoBingInfo.getBiaobings();
+      for (BiaoBing bb : bblist) {
+        if (bb.getId().equals(biaoBing.getId())) {
+          AddInfo addInfo = new AddInfo();
+          addInfo.setPid(biaoBingInfo.getId());
+          addInfo.setPtitle(biaoBingInfo.getTitle());
+          bb.setAddInfo(addInfo);
+          return bb;
+        }
+      }
+    }
+    return null;
+  }
+
   @Override
-  public JsonMessage getBiaoBingInfo(DataModel model) {
+  public JsonMessage getBiaoBingInfo(DataModel model) throws Exception {
     loadData();
     List<BiaoBingInfo> list = dataInfo.getBiaobingInfos();
     return JsonMessage.getSuccess("").put("list", list);
+  }
+
+  @Override
+  public JsonMessage getBiaoBingById(DataModel model) throws Exception {
+    return JsonMessage.getSuccess("").put("biaobing", find(model.getBiaoBing()));
   }
 
 }

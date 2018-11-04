@@ -24,4 +24,9 @@ public class DataController {
   public JsonMessage biaobingInfos(DataModel model) throws Exception {
     return dataService.getBiaoBingInfo(model);
   }
+
+  @RequestMapping("/queryBiaobingById")
+  public JsonMessage queryBiaobingById(DataModel model) throws Exception {
+    return dataService.getBiaoBingById(model);
+  }
 }

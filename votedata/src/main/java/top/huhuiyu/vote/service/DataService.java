@@ -13,10 +13,20 @@ public interface DataService {
   public static final String DATA_FILE = "/data.json";
 
   /**
-   * 获取标兵信息
+   * -获取标兵信息
    * 
    * @param model
    * @return
+   * @throws Exception
    */
-  JsonMessage getBiaoBingInfo(DataModel model);
+  JsonMessage getBiaoBingInfo(DataModel model) throws Exception;
+
+  /**
+   * -按照id获取标兵信息
+   * 
+   * @param model
+   * @return
+   * @throws Exception
+   */
+  JsonMessage getBiaoBingById(DataModel model) throws Exception;
 }

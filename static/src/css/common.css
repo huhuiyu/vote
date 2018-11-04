@@ -24,3 +24,14 @@ body {
 .mr10 {
   margin: 10px;
 }
+
+.back {
+  position: fixed;
+  right: 0px;
+  cursor: pointer;
+}
+
+.back:hover {
+  color: #ffffff;
+  background-color: #aa0000;
+}

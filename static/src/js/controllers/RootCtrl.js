@@ -25,7 +25,7 @@
       $log.debug('RootCtrl destroy...');
     });
     DialogService.setDialogTitle($rootScope.appTitle);
-    DataService.setDataServer('http://127.0.0.1:14000');
+    DataService.setDataServer('/dataService');
 
     // 监听视图切换
     $rootScope.$on('$routeChangeStart', function(event, next, current) {

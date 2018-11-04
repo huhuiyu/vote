@@ -1,0 +1,14 @@
+<div class="biaobinginfo h100" ng-controller="BiaoBingInfoCtrl">
+  <div class="back">
+    <span onclick="javascript:history.back();">返回</span>
+  </div>
+  <div class="div-main h100">
+    <div class="title text-center" ng-bind="biaobing.addInfo.ptitle"></div>
+    <div class="infomation">
+      <div class="img-div">
+        <img ng-src="{{biaobing.image}}" class="img-responsive center-block">
+      </div>
+      <div class="biaobing-info" ng-bind="biaobing.info"></div>
+    </div>
+  </div>
+</div>

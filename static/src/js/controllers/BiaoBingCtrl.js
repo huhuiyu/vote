@@ -4,10 +4,11 @@
     '$scope',
     '$log',
     'DataService',
+    'MyUtilService',
     BiaoBingCtrl
   ]);
 
-  function BiaoBingCtrl($scope, $log, DataService) {
+  function BiaoBingCtrl($scope, $log, DataService, MyUtilService) {
     $log.debug('BiaoBingCtrl init...');
 
     // 处理scope销毁
@@ -22,5 +23,9 @@
     });
 
     $scope.items = [];
+
+    $scope.info = function(id) {
+      MyUtilService.toPage('/biaobinginfo', { id: id });
+    };
   }
 })();

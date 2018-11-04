@@ -17,6 +17,7 @@ public class BiaoBing extends BaseEntity {
   private String name;
   private String info;
   private String image;
+  private AddInfo addInfo;
 
   public BiaoBing() {
   }
@@ -67,6 +68,14 @@ public class BiaoBing extends BaseEntity {
 
   public void setImage(String image) {
     this.image = image;
+  }
+
+  public AddInfo getAddInfo() {
+    return addInfo;
+  }
+
+  public void setAddInfo(AddInfo addInfo) {
+    this.addInfo = addInfo;
   }
 
 }
