@@ -25,9 +25,13 @@
 
     $scope.voteInfo = { nums: 35, voteCount: 1923, vistors: 23412 };
 
-    DataService.send('/data/biaobingInfos', {}, function(data) {
-      $scope.items = data.datas.list;
-    });
+    function query() {
+      DataService.send('/data/biaobingInfos', {}, function(data) {
+        $scope.items = data.datas.list;
+      });
+    }
+
+    query();
 
     $scope.items = [];
 
@@ -58,6 +62,7 @@
         { selectedIds: ids.join(',') },
         function(data) {
           DialogService.hideWait();
+          query();
         }
       );
     };

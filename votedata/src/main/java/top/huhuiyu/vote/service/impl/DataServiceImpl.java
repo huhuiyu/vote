@@ -175,7 +175,17 @@ public class DataServiceImpl implements DataService {
   public JsonMessage getBiaoBingInfo(DataModel model) throws Exception {
     loadData();
     loadVoteData();
+    List<VoteInfo> vis = voteInfos.get(VoteInfo.BIAOBING);
     List<BiaoBingInfo> list = dataInfo.getBiaobingInfos();
+    for (BiaoBingInfo biaoBingInfo : list) {
+      for (BiaoBing biaoBing : biaoBingInfo.getBiaobings()) {
+        for (VoteInfo vi : vis) {
+          if (vi.getId().equals(biaoBing.getId())) {
+            biaoBing.setStars(vi.getCount());
+          }
+        }
+      }
+    }
     return JsonMessage.getSuccess("").put("list", list);
   }
 

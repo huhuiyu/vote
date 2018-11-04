@@ -32,5 +32,7 @@ public class AddInfo extends BaseEntity {
   public void setPtitle(String ptitle) {
     this.ptitle = ptitle;
   }
+  
+  
 
 }
