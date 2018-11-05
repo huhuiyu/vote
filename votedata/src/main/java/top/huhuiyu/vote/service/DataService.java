@@ -80,4 +80,13 @@ public interface DataService {
    * @throws Exception
    */
   JsonMessage voteBingSao(DataModel model) throws Exception;
+
+  /**
+   * -投票管理信息
+   * 
+   * @param model
+   * @return
+   * @throws Exception
+   */
+  JsonMessage voteInfoView(DataModel model) throws Exception;
 }

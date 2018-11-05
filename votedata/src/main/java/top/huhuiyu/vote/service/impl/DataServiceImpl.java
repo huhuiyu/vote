@@ -354,4 +354,35 @@ public class DataServiceImpl implements DataService {
     return JsonMessage.getSuccess("").put("rule", dataInfo.getTotalRule());
   }
 
+  @Override
+  public JsonMessage voteInfoView(DataModel model) throws Exception {
+    loadData();
+    loadVoteData();
+    List<VoteInfo> vis = voteInfos.get(VoteInfo.BIAOBING);
+    List<BiaoBingInfo> list = dataInfo.getBiaobingInfos();
+    for (BiaoBingInfo biaoBingInfo : list) {
+      for (BiaoBing biaoBing : biaoBingInfo.getBiaobings()) {
+        for (VoteInfo vi : vis) {
+          if (vi.getId().equals(biaoBing.getId())) {
+            biaoBing.setStars(vi.getCount());
+          }
+        }
+      }
+    }
+    List<VoteInfo> bsvis = voteInfos.get(VoteInfo.BINGSAO);
+    List<BiaoBingInfo> bslist = dataInfo.getBingsaoInfos();
+    for (BiaoBingInfo biaoBingInfo : bslist) {
+      for (BiaoBing biaoBing : biaoBingInfo.getBiaobings()) {
+        for (VoteInfo vi : bsvis) {
+          if (vi.getId().equals(biaoBing.getId())) {
+            biaoBing.setStars(vi.getCount());
+          }
+        }
+      }
+    }
+    JsonMessage message = JsonMessage.getSuccess("");
+    message.put("bblist", list).put("bslist", bslist);
+    return message;
+  }
+
 }

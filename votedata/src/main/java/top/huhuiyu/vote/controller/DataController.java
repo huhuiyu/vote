@@ -37,7 +37,7 @@ public class DataController {
 
   @RequestMapping("/getIndexRule")
   public JsonMessage getIndexRule(DataModel model) throws Exception {
-    
+
     return dataService.getIndexRule(model);
   }
 
@@ -54,5 +54,10 @@ public class DataController {
   @RequestMapping("/voteBingSao")
   public JsonMessage voteBingSao(DataModel model) throws Exception {
     return dataService.voteBingSao(model);
+  }
+
+  @RequestMapping("/voteInfoView")
+  public JsonMessage voteInfoView(DataModel model) throws Exception {
+    return dataService.voteInfoView(model);
   }
 }

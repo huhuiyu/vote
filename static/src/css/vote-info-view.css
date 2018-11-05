@@ -1,0 +1,35 @@
+/*vote-info-view页面的css*/
+.vote-info-view {
+  background-image: url('../images/bg.jpg');
+  background-size: cover;
+  background-color: #aa0000;
+  font-size: 1rem;
+}
+
+.vote-info-view .div-main {
+  /* background-color: #aa0000; */
+  border: 1px solid #ffffff;
+}
+
+.vote-info-view .title {
+  background-color: #aa0000;
+  color: #ffffff;
+  font-size: 3rem;
+  width: 100%;
+  border-bottom: 1px solid #ffffff;
+}
+
+.vote-info-view .infos {
+  margin: 2rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.vote-info-view .info {
+  font-weight: bold;
+  margin: 1rem;
+  width: 30%;
+  color: #ffffff;
+  font-size: 2rem;
+}

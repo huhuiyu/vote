@@ -1,0 +1,37 @@
+<div class="vote-info-view" ng-controller="VoteInfoViewCtrl">
+  <div class="div-main">
+    <div class="title text-center">统计信息</div>
+    <div class="infos">
+      <div class="info" ng-repeat="bbinfo in bblist">
+        <table class="table table-bordered">
+          <caption class="text-center bg-primary" ng-bind="bbinfo.title"></caption>
+          <tr>
+            <td>姓名</td>
+            <td>投票数</td>
+          </tr>
+          <tr ng-repeat="bb in bbinfo.biaobings">
+            <td ng-bind="bb.name"></td>
+            <td ng-bind="bb.stars"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <hr>
+
+    <div class="infos">
+      <div class="info" ng-repeat="bbinfo in bslist">
+        <table class="table table-bordered">
+          <caption class="text-center bg-primary" ng-bind="bbinfo.title"></caption>
+          <tr>
+            <td>姓名</td>
+            <td>投票数</td>
+          </tr>
+          <tr ng-repeat="bb in bbinfo.biaobings">
+            <td ng-bind="bb.name"></td>
+            <td ng-bind="bb.stars"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
