@@ -24,7 +24,7 @@
             <div class="info">
               <div class="name"><i class="iconfont">&#xe627;</i> <span ng-bind="data.name"></span></div>
               <div>
-                <div ng-class="{true:'vote selected',false:'vote'}[data.selected]" ng-click="data.selected=true"><i
+                <div ng-class="{true:'vote selected',false:'vote'}[data.selected]" ng-click="data.selected=!data.selected"><i
                     class="iconfont">&#xe672;</i> 投票</div>
               </div>
               <div class="vote-count">

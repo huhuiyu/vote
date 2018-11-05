@@ -93,9 +93,12 @@
   cursor: pointer;
 }
 
-.biaobing .items .item .vote:hover,
-.biaobing .items .item .vote.selected {
+.biaobing .items .item .vote:hover {
   background-color: #ffaaaa;
+}
+
+.biaobing .items .item .vote.selected {
+  background-color: #ff0000;
 }
 
 .biaobing .items .item .vote-count {

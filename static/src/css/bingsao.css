@@ -93,9 +93,12 @@
   cursor: pointer;
 }
 
-.bingsao .items .item .vote:hover,
-.bingsao .items .item .vote.selected {
+.bingsao .items .item .vote:hover {
   background-color: #ffaaaa;
+}
+
+.bingsao .items .item .vote.selected {
+  background-color: #ff0000;
 }
 
 .bingsao .items .item .vote-count {
