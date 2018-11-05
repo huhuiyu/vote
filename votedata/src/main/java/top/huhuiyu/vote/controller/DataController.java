@@ -37,6 +37,7 @@ public class DataController {
 
   @RequestMapping("/getIndexRule")
   public JsonMessage getIndexRule(DataModel model) throws Exception {
+    
     return dataService.getIndexRule(model);
   }
 

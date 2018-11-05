@@ -115,14 +115,14 @@
 }
 
 .biaobing .vote-info div {
-  width: 33%;
+  width: 45%;
   text-align: center;
   color: #ffffff;
 }
 
 .biaobing .vote-info .center {
   border-left: 1px solid #ffffff;
-  border-right: 1px solid #ffffff;
+  /* border-right: 1px solid #ffffff; */
 }
 
 .biaobing .vote-confirm {

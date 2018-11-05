@@ -23,12 +23,13 @@
       $log.debug('BiaoBingCtrl destroy...');
     });
 
-    $scope.voteInfo = { nums: 35, voteCount: 1923, vistors: 23412 };
-
     function query() {
       DataService.send('/data/biaobingInfos', {}, function(data) {
         $scope.items = data.datas.list;
-        $scope.rule=data.datas.rule;
+        $scope.rule = data.datas.rule;
+        $scope.count = data.datas.count;
+        $scope.acount = data.datas.acount;
+        $scope.vistors = data.datas.vistors;
       });
     }
 

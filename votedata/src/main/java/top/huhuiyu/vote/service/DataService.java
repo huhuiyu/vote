@@ -16,6 +16,7 @@ public interface DataService {
   public static final String DATA_FILE = "/data.json";
   public static final String VOTE_FILE = "/vote.data";
   public static final String IPS_FILE = "/ips.data";
+  public static final String VISTORS_FILE = "/vistors.data";
 
   /**
    * -获取标兵信息

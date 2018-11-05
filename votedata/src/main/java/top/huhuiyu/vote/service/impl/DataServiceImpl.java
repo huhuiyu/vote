@@ -251,6 +251,10 @@ public class DataServiceImpl implements DataService {
     loadData();
     loadVoteData();
     List<VoteInfo> vis = voteInfos.get(VoteInfo.BIAOBING);
+    int count = 0;
+    for (VoteInfo vi : vis) {
+      count += vi.getCount();
+    }
     List<BiaoBingInfo> list = dataInfo.getBiaobingInfos();
     for (BiaoBingInfo biaoBingInfo : list) {
       for (BiaoBing biaoBing : biaoBingInfo.getBiaobings()) {
@@ -261,7 +265,7 @@ public class DataServiceImpl implements DataService {
         }
       }
     }
-    return JsonMessage.getSuccess("").put("list", list).put("rule", dataInfo.getBiaobingRule());
+    return JsonMessage.getSuccess("").put("list", list).put("rule", dataInfo.getBiaobingRule()).put("count", count).put("acount", 30);
   }
 
   @Override
@@ -292,7 +296,7 @@ public class DataServiceImpl implements DataService {
     saveVoteData();
     return JsonMessage.getSuccess("投票成功");
   }
-  
+
   @Override
   public synchronized JsonMessage voteBingSao(DataModel model) throws Exception {
     loadIpsData();
@@ -322,6 +326,10 @@ public class DataServiceImpl implements DataService {
     loadData();
     loadVoteData();
     List<VoteInfo> vis = voteInfos.get(VoteInfo.BINGSAO);
+    int count = 0;
+    for (VoteInfo vi : vis) {
+      count += vi.getCount();
+    }
     List<BiaoBingInfo> list = dataInfo.getBingsaoInfos();
     for (BiaoBingInfo biaoBingInfo : list) {
       for (BiaoBing biaoBing : biaoBingInfo.getBiaobings()) {
@@ -332,7 +340,7 @@ public class DataServiceImpl implements DataService {
         }
       }
     }
-    return JsonMessage.getSuccess("").put("list", list).put("rule", dataInfo.getBingsaoRule());
+    return JsonMessage.getSuccess("").put("list", list).put("rule", dataInfo.getBingsaoRule()).put("count", count).put("acount", 20);
   }
 
   @Override
