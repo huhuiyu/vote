@@ -54,20 +54,23 @@ public class DataServiceImpl implements DataService {
   private static void loadData() {
     // 读取文件到datainfo
     try {
-      log.debug("读取文件中");
       File dataFile = new File(System.getProperty("user.dir") + DATA_FILE);
-      log.debug(String.format("最后修改时间:%s-%s", lastmodify, dataFile.lastModified()));
-      if (lastmodify != dataFile.lastModified()) {
+      log.debug("读取文件中:" + dataFile.getAbsolutePath());
+      log.debug(String.format("最后修改时间:%s-%s,%s", lastmodify, dataFile.lastModified(), dataFile.length()));
+      if (lastmodify != dataFile.lastModified() || dataInfo == null) {
         lastmodify = dataFile.lastModified();
         StringBuilder sb = new StringBuilder();
-        Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + DATA_FILE));
+        Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + DATA_FILE), "UTF-8");
         while (scanner.hasNextLine()) {
           sb.append(scanner.nextLine());
         }
         scanner.close();
+        log.debug("datainfo:" + sb.toString());
         dataInfo = JSON.parseObject(sb.toString(), DataInfo.class);
       }
+      log.debug("datainfo:" + dataInfo);
     } catch (Exception ex) {
+      log.error("读取错误", ex);
       throw new RuntimeException("读取数据文件发生错误。" + ex.getMessage());
     }
   }
@@ -83,7 +86,7 @@ public class DataServiceImpl implements DataService {
         return;
       }
       File dataFile = new File(System.getProperty("user.dir") + VOTE_FILE);
-
+      log.debug("读取文件中:" + dataFile.getAbsolutePath());
       if (!dataFile.exists()) {
         // 文件不存在就初始化
         loadData();
@@ -112,6 +115,7 @@ public class DataServiceImpl implements DataService {
       }
       log.debug(voteInfos.toString());
     } catch (Exception ex) {
+      log.error("读取错误", ex);
       throw new RuntimeException("读取投票文件发生错误。" + ex.getMessage());
     }
   }
@@ -151,6 +155,7 @@ public class DataServiceImpl implements DataService {
       }
       log.debug(ips.toString());
     } catch (Exception ex) {
+      log.error("读取错误", ex);
       throw new RuntimeException("读取投票文件发生错误。" + ex.getMessage());
     }
   }
@@ -180,6 +185,34 @@ public class DataServiceImpl implements DataService {
       return null;
     }
     List<BiaoBingInfo> list = dataInfo.getBiaobingInfos();
+    for (BiaoBingInfo biaoBingInfo : list) {
+      List<BiaoBing> bblist = biaoBingInfo.getBiaobings();
+      for (BiaoBing bb : bblist) {
+        if (bb.getId().equals(biaoBing.getId())) {
+          AddInfo addInfo = new AddInfo();
+          addInfo.setPid(biaoBingInfo.getId());
+          addInfo.setPtitle(biaoBingInfo.getTitle());
+          bb.setAddInfo(addInfo);
+          return bb;
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   * -按照id查询军嫂
+   * 
+   * @param biaoBing
+   * @return
+   * @throws Exception
+   */
+  private BiaoBing findBingsao(BiaoBing biaoBing) throws Exception {
+    loadData();
+    if (biaoBing == null || biaoBing.getId() == null) {
+      return null;
+    }
+    List<BiaoBingInfo> list = dataInfo.getBingsaoInfos();
     for (BiaoBingInfo biaoBingInfo : list) {
       List<BiaoBing> bblist = biaoBingInfo.getBiaobings();
       for (BiaoBing bb : bblist) {
@@ -259,6 +292,30 @@ public class DataServiceImpl implements DataService {
     saveVoteData();
     return JsonMessage.getSuccess("投票成功");
   }
+  
+  @Override
+  public synchronized JsonMessage voteBingSao(DataModel model) throws Exception {
+    loadIpsData();
+    String ip = MyUtils.getIpAddr() + VoteInfo.BINGSAO;
+    String now = SDF.format(new Date());
+    if (ips.containsKey(ip) && now.equals(ips.get(ip))) {
+      return JsonMessage.getFail("今天已经投过票了");
+    }
+    ips.put(ip, now);
+    saveIpsData();
+    loadVoteData();
+    List<VoteInfo> vis = voteInfos.get(VoteInfo.BINGSAO);
+    List<Integer> ids = getIds(model.getSelectedIds());
+    for (Integer id : ids) {
+      for (VoteInfo voteInfo : vis) {
+        if (voteInfo.getId().equals(id)) {
+          voteInfo.setCount(voteInfo.getCount() + 1);
+        }
+      }
+    }
+    saveVoteData();
+    return JsonMessage.getSuccess("投票成功");
+  }
 
   @Override
   public JsonMessage getBingSaoInfo(DataModel model) throws Exception {
@@ -276,6 +333,11 @@ public class DataServiceImpl implements DataService {
       }
     }
     return JsonMessage.getSuccess("").put("list", list).put("rule", dataInfo.getBingsaoRule());
+  }
+
+  @Override
+  public JsonMessage getBingSaoById(DataModel model) throws Exception {
+    return JsonMessage.getSuccess("").put("biaobing", findBingsao(model.getBiaoBing()));
   }
 
   @Override

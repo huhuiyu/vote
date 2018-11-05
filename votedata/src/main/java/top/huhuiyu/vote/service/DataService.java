@@ -61,4 +61,22 @@ public interface DataService {
    * @throws Exception
    */
   JsonMessage getBingSaoInfo(DataModel model) throws Exception;
+
+  /**
+   * -按照id获取军嫂信息
+   * 
+   * @param model
+   * @return
+   * @throws Exception
+   */
+  JsonMessage getBingSaoById(DataModel model) throws Exception;
+
+  /**
+   * -军嫂投票
+   * 
+   * @param model
+   * @return
+   * @throws Exception
+   */
+  JsonMessage voteBingSao(DataModel model) throws Exception;
 }

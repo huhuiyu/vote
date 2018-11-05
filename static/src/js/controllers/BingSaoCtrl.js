@@ -28,7 +28,7 @@
     function query() {
       DataService.send('/data/bingsaoInfos', {}, function(data) {
         $scope.items = data.datas.list;
-        $scope.rule=data.datas.rule;
+        $scope.rule = data.datas.rule;
       });
     }
 
@@ -45,25 +45,28 @@
     };
 
     $scope.toVote = function() {
-      var datas = $scope.items;
+      $log.debug($scope.items[0].biaobings);
+      var datas = $scope.items[0].biaobings;
+      var counts = datas.length / 2;
       var ids = [];
       for (var i = 0; i < datas.length; i++) {
         var item = datas[i];
         $log.debug(item);
-        if (item.selectedId != -1) {
-          ids.push(item.selectedId);
+        if (item.selected) {
+          ids.push(item.id);
         }
       }
-      if (ids.length != datas.length) {
+      if (ids.length != counts) {
         DialogService.showAlert(
-          '必须选中' + datas.length + '个，当前选中数量为：' + ids.length
+          '必须选中' + counts + '个，当前选中数量为：' + ids.length
         );
         return;
       }
       $log.debug('selectIds:', ids.join(','));
+
       DialogService.showWait('投票中...');
       DataService.send(
-        '/data/voteBiaoBing',
+        '/data/voteBingSao',
         { selectedIds: ids.join(',') },
         function(data) {
           DialogService.hideWait();
